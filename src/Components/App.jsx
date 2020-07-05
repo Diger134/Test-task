@@ -33,24 +33,25 @@ class App extends React.Component {
         for (let index = 0; index < this.state.inputValue; index++) {
             const matrixRow = []
             for (let index = 0; index < this.state.inputValue; index++) {
-                matrixRow.push(Math.floor(Math.random() * 2).toString())
+                matrixRow.push(Math.floor(Math.random() * 2).toString());
             }
             newMatrix.push(matrixRow)
         }
         this.setState ({
             matrix: newMatrix,
             paintingActive: false
-        })
-        localStorage.setItem('matrix', JSON.stringify(newMatrix));
-        localStorage.setItem('paintingActive', JSON.stringify(false));
+        }, () => {
+            localStorage.setItem('matrix', JSON.stringify(this.state.matrix));
+            localStorage.setItem('paintingActive', JSON.stringify(this.state.paintingActive));
+        })   
     }
 
     paintOver = () => {
-
         this.setState ({
             paintingActive: true
-        })
-        localStorage.setItem('paintingActive', JSON.stringify(true));
+        }, () => {
+            localStorage.setItem('paintingActive', JSON.stringify(this.state.paintingActive));
+        })    
     }
 
     render() {

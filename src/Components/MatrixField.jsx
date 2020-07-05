@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function MatrixField({matrix, paintingActive}) {
     const matrixRow = matrix.map((row, rowId) => {
-                                    const matrixCell = row.map((cell, cellId) =>
-                                                            <div className = {checkPaint(matrix, row, rowId, cell, cellId, paintingActive )} key = { cellId }> 
-                                                                {cell}
-                                                            </div>) 
-                                    return <div className = "matrix-field_row" key = {rowId}> { matrixCell } </div>})
+        const matrixCell = row.map((cell, cellId) =>
+            <div className = {checkPaint(matrix, row, rowId, cell, cellId, paintingActive )} key = { cellId }> 
+                {cell}
+            </div>) 
+        return <div className = "matrix-field_row" key = {rowId}> { matrixCell } </div>})
     return (
         <div className = "matrix-field" > { matrixRow } </div>
     )
